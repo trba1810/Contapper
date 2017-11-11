@@ -1,0 +1,16 @@
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.csprojResolveAssemblyReference.cache
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.csproj.CoreCompileInputs.cache
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin\Debug\Contapper.DAL.dll.config
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin\Debug\Contapper.DAL.dll
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin\Debug\Contapper.DAL.pdb
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin\Debug\EntityFramework.dll
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin\Debug\System.Data.SQLite.dll
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin\Debug\EntityFramework.xml
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin\Debug\System.Data.SQLite.xml
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.dll
+C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.pdb

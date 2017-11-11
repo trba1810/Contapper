@@ -1,0 +1,15 @@
+
+
+
+CREATE TABLE Company (
+    Id          VARCHAR PRIMARY KEY,
+    CompanyName VARCHAR,
+    City        VARCHAR,
+    Address     VARCHAR,
+    PhoneNumber VARCHAR,
+    Status      VARCHAR,
+    Date        VARCHAR,
+    Details     VARCHAR
+);
+
+
