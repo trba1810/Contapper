@@ -52,7 +52,7 @@ namespace Contapper
             var strBuilder = new StringBuilder("http://maps.google.com/maps?q=");
 
             strBuilder.Append(city);
-            //strBuilder.Append(",");
+            strBuilder.Append(" ");
             strBuilder.Append(address);
             webBrowser1.Navigate(strBuilder.ToString());
 

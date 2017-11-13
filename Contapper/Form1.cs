@@ -31,7 +31,7 @@ namespace Contapper
             {
                 return;
             }
-            companiesDataGrid.Rows.Add(company.Id , company.CompanyName, company.City, company.Address , company.PhoneNumber, SetStatusImage(company.Status) , company.Date.ToShortDateString() , company.Details) ;
+            companiesDataGrid.Rows.Add(company.Id , company.CompanyName, company.City, company.Address , company.PhoneNumber, SetStatusImage(company.Status) , company.FirstEntryDate , company.Details) ;
         }
 
         public void InitializeUpdatedDataGrid(Company company)
@@ -49,7 +49,7 @@ namespace Contapper
                     companiesDataGrid.Rows[i].Cells[3].Value = company.Address;
                     companiesDataGrid.Rows[i].Cells[4].Value = company.PhoneNumber;
                     companiesDataGrid.Rows[i].Cells[5].Value = SetStatusImage(company.Status);
-                    companiesDataGrid.Rows[i].Cells[6].Value = company.Date;
+                    companiesDataGrid.Rows[i].Cells[6].Value = company.FirstEntryDate;
                     companiesDataGrid.Rows[i].Cells[7].Value = company.Details;
                 }
             }
@@ -66,7 +66,7 @@ namespace Contapper
            
             foreach (var d in data)
             {
-                companiesDataGrid.Rows.Add(d.Id,d.CompanyName,d.City,d.Address,d.PhoneNumber, SetStatusImage(d.Status),d.Date.ToShortDateString(),d.Details);
+                companiesDataGrid.Rows.Add(d.Id,d.CompanyName,d.City,d.Address,d.PhoneNumber, SetStatusImage(d.Status),d.FirstEntryDate,d.Details);
             }
         }
 
@@ -124,7 +124,7 @@ namespace Contapper
                 Company.Address = selectedRow.Cells[3].Value.ToString();
                 Company.PhoneNumber = selectedRow.Cells[4].Value.ToString();
                 Company.Status = EnumConverter.ConvertToStatusEnum(selectedRow.Cells[5].Value.ToString());
-                Company.Date = Convert.ToDateTime(selectedRow.Cells[6].Value.ToString());
+                Company.FirstEntryDate = selectedRow.Cells[6].Value.ToString();
                 Company.Details = selectedRow.Cells[7].Value.ToString();
             }
             

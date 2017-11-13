@@ -14,3 +14,19 @@ C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin
 C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\bin\Debug\System.Data.SQLite.dll.config
 C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.dll
 C:\Users\TRBA8\OneDrive\Documents\Visual Studio 2017\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.pdb
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\Contapper.DAL.dll.config
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\Contapper.DAL.dll
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\Contapper.DAL.pdb
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\EntityFramework.dll
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\EntityFramework.SqlServer.dll
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\System.Data.SQLite.dll
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\System.Data.SQLite.EF6.dll
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\System.Data.SQLite.Linq.dll
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\EntityFramework.xml
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\EntityFramework.SqlServer.xml
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\System.Data.SQLite.xml
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\System.Data.SQLite.dll.config
+F:\GitHub\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.csprojResolveAssemblyReference.cache
+F:\GitHub\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.csproj.CoreCompileInputs.cache
+F:\GitHub\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.dll
+F:\GitHub\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.pdb

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SQLite;
 using System.Data;
+using System.Globalization;
 
 namespace Contapper.DAL
 {
@@ -34,20 +35,20 @@ namespace Contapper.DAL
                     {
                         while (reader.Read())
                         {
-                            var company = new Company
+                            var newCompany = new Company
                             {
 
-                                Id = (reader["Id"]).ToString(),
+                                Id = reader["Id"].ToString(),
                                 CompanyName = reader["CompanyName"].ToString(),
                                 City = reader["City"].ToString(),
                                 Address = reader["Address"].ToString(),
                                 PhoneNumber = reader["PhoneNumber"].ToString(),
                                 Status = GetStatusFromDB(reader["Status"]),
-                                Date = DateTime.Parse(reader["Date"]?.ToString()),
+                                FirstEntryDate = reader["FirstEntryDate"].ToString(),
                                 Details = reader["Details"].ToString()
 
                             };
-                            companies.Add(company);
+                            companies.Add(newCompany);
                         }
                               
                     }
@@ -89,7 +90,7 @@ namespace Contapper.DAL
 
         public bool InsertNewCompany(Company company)
         {
-            var sql = "INSERT INTO Company(Id,CompanyName,City,Address,PhoneNumber,Status,Date,Details) values('" +company.Id + "','" + company.CompanyName + "','" + company.City + "','" + company.Address + "','" + company.PhoneNumber + "','" + company.Status + "','" + company.Date.ToShortDateString() + "','" + company.Details + "')";
+            var sql = "INSERT INTO Company(Id,CompanyName,City,Address,PhoneNumber,Status,FirstEntryDate,Details) values('" + company.Id + "','" + company.CompanyName + "','" + company.City + "','" + company.Address + "','" + company.PhoneNumber + "','" + company.Status + "','" + company.FirstEntryDate + "','" + company.Details + "')";
 
             try
             {
@@ -105,7 +106,7 @@ namespace Contapper.DAL
                         command.Parameters.Add(new SQLiteParameter("@Address", DbType.String));
                         command.Parameters.Add(new SQLiteParameter("@PhoneNumber", DbType.String));
                         command.Parameters.Add(new SQLiteParameter("@Status", DbType.String));
-                        command.Parameters.Add(new SQLiteParameter("@Date", DbType.String));
+                        command.Parameters.Add(new SQLiteParameter("@FirstEntryDate", DbType.String));
                         command.Parameters.Add(new SQLiteParameter("@Details", DbType.String));
                     }
                 }
@@ -117,9 +118,9 @@ namespace Contapper.DAL
             }
         }
 
-        public bool UpdateCompany(Company company)
+        public bool UpdateCompany(Company company) //TODO Finish this up
         {
-            var sql = "UPDATE Company SET CompanyName = '" + company.CompanyName + "', City = '" + company.City + "', Address = '" + company.Address + "', Date = '" + company.Date.ToShortDateString() + "'WHERE ID = '" + company.Id + "'";
+            var sql = "UPDATE Company SET CompanyName = '" + company.CompanyName + "', City = '" + company.City + "', Address = '" + company.Address + "', Date = '" + company.FirstEntryDate + "'WHERE ID = '" + company.Id + "'";
 
             try
             {
@@ -132,7 +133,7 @@ namespace Contapper.DAL
                         command.Parameters.AddWithValue("@CompanyName", DbType.String); // bez ID
                         command.Parameters.AddWithValue("@City", DbType.String);
                         command.Parameters.AddWithValue("@Address", DbType.String);
-                        command.Parameters.AddWithValue("@Date", DbType.String);
+                        command.Parameters.AddWithValue("@FirstEntryDate", DbType.String);
                     }
                 }
                 return true;
@@ -162,32 +163,6 @@ namespace Contapper.DAL
             {
                 throw e;
             }
-        }
-
-        public bool InsertNewLocation(string id ,string locationLink)
-        {
-            var sql = "INSERT INTO CompanyLocation (CompanyId, Location) values ('" + id + "','" + locationLink + "')";
-
-            try
-            {
-                using (var connection = new SQLiteConnection(_connectionString))
-                {
-                    var command = new SQLiteCommand(sql, connection);
-                    connection.Open();
-                    using (command.ExecuteReader())
-                    {
-                        command.Parameters.Add(new SQLiteParameter("@CompanyId", DbType.Int32));
-                        command.Parameters.Add(new SQLiteParameter("@Location", DbType.String));                       
-                    }                    
-                }
-                return true;
-            }
-            catch (Exception e)
-            {
-                throw e;
-            }
-        }
-
-        
+        }      
     }
 }

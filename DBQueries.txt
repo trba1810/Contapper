@@ -8,7 +8,7 @@ CREATE TABLE Company (
     Address     VARCHAR,
     PhoneNumber VARCHAR,
     Status      VARCHAR,
-    Date        VARCHAR,
+    FirstEntryDate        VARCHAR,
     Details     VARCHAR
 );
 
