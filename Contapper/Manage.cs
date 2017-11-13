@@ -43,7 +43,7 @@ namespace Contapper
             phoneNumber.Text = company.PhoneNumber;
             StatusComboBox.SelectedItem = company.Status.ToString();
             DetailsTextBox.Text = company.Details;
-            dateTimePicker1.Text = company.Date.ToShortDateString();
+            dateTimePicker1.Text = company.FirstEntryDate;
             ButtonOperation = operation;
             DefaultStatus = company.Status;
         }
@@ -77,7 +77,7 @@ namespace Contapper
                 company.City = city.Text;
                 company.Address = address.Text;
                 company.Status = EnumConverter.ConvertToStatusEnum(StatusComboBox.SelectedItem);
-                company.Date = DateTime.Parse(dateTimePicker1.Text);
+                company.FirstEntryDate = dateTimePicker1.Text;
                 company.Details = DetailsTextBox.Text;
                 company.PhoneNumber = phoneNumber.Text;
                 if (ButtonOperation == Operation.Create)
