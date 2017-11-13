@@ -20,7 +20,7 @@ namespace Contapper.DAL.Model
 
         public Status Status { get; set; }
 
-        public DateTime Date { get; set; }
+        public string FirstEntryDate { get; set; }
 
         public string Details { get; set; }
     }
