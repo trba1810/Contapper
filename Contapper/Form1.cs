@@ -16,12 +16,15 @@ namespace Contapper
     {
         public Company Company { get; set; } = new Company();
 
-        public Form1(Company company)
+        public Login Login { get; set; }
+
+        public Form1(Company company,Login login)
         {
             InitializeComponent();
             
-
             InitializeDataGrid(company);
+
+            Login = login;
                            
         }
 
@@ -56,7 +59,7 @@ namespace Contapper
 
         }
         private void Form1_Load(object sender, EventArgs e)
-        {
+        {           
             // kad se ucita form1 prozor izvuci sve iz baze
             updateButton.Enabled = false;
             deleteButton.Enabled = false;
@@ -177,6 +180,11 @@ namespace Contapper
             Map map = new Map(city,address);
 
             map.Show();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Login.Show();
         }
     }
 }

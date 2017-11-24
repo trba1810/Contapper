@@ -56,3 +56,4 @@ F:\GitHub\Contapper\Contapper\bin\Debug\EntityFramework.SqlServer.xml
 F:\GitHub\Contapper\Contapper\bin\Debug\Gmap.net.pdb
 F:\GitHub\Contapper\Contapper\bin\Debug\System.Data.SQLite.xml
 F:\GitHub\Contapper\Contapper\bin\Debug\System.Data.SQLite.dll.config
+F:\GitHub\Contapper\Contapper\obj\Debug\Contapper.Login.resources

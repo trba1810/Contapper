@@ -30,3 +30,12 @@ F:\GitHub\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.csprojResolveAssemblyR
 F:\GitHub\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.csproj.CoreCompileInputs.cache
 F:\GitHub\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.dll
 F:\GitHub\Contapper\Contapper.DAL\obj\Debug\Contapper.DAL.pdb
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\x86\e_sqlite3.dll
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\x64\e_sqlite3.dll
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\SQLite-net.dll
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\SQLitePCLRaw.batteries_green.dll
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\SQLitePCLRaw.batteries_v2.dll
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\SQLitePCLRaw.core.dll
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\SQLitePCLRaw.provider.e_sqlite3.dll
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\SQLite-net.pdb
+F:\GitHub\Contapper\Contapper.DAL\bin\Debug\SQLite-net.xml
