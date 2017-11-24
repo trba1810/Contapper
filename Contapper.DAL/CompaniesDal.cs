@@ -28,9 +28,7 @@ namespace Contapper.DAL
                 try
                 {
                     var command = new SQLiteCommand(sql, connection);
-                    connection.Open();
-                    
-
+                    connection.Open();                    
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -49,8 +47,7 @@ namespace Contapper.DAL
 
                             };
                             companies.Add(newCompany);
-                        }
-                              
+                        }                             
                     }
                     return companies;
                 }

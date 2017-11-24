@@ -12,4 +12,11 @@ CREATE TABLE Company (
     Details     VARCHAR
 );
 
+CREATE TABLE `User` (
+	`Username`	VARCHAR,
+	`Password`	VARCHAR,
+	`ID`	VARCHAR,
+	PRIMARY KEY(`ID`)
+);
+
 
