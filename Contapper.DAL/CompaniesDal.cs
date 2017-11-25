@@ -160,6 +160,49 @@ namespace Contapper.DAL
             {
                 throw e;
             }
-        }      
+        }
+
+        public List<Company> SearchCompanyBy(string phrase)
+        {
+            var companies = new List<Company>();
+
+            var sql = "SELECT * FROM Company WHERE CompanyName LIKE '%" + phrase +"%'";
+
+            try
+            {
+                using (var connection = new SQLiteConnection(_connectionString))
+                {
+                    var command = new SQLiteCommand(sql, connection);
+                    connection.Open();
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var result = new Company
+                            {
+
+                                Id = reader["Id"].ToString(),
+                                CompanyName = reader["CompanyName"].ToString(),
+                                City = reader["City"].ToString(),
+                                Address = reader["Address"].ToString(),
+                                PhoneNumber = reader["PhoneNumber"].ToString(),
+                                Status = GetStatusFromDB(reader["Status"]),
+                                FirstEntryDate = reader["FirstEntryDate"].ToString(),
+                                Details = reader["Details"].ToString()
+
+                            };
+                            companies.Add(result);
+                        }
+                    }
+                    return companies;
+                }
+                   
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
     }
 }

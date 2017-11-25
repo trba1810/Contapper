@@ -186,5 +186,38 @@ namespace Contapper
         {
             Login.Show();
         }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(searchBox.Text))
+            {
+                MessageBox.Show("Unesite pojam za pretragu");
+                return;
+            }
+            CompaniesDal SrchDal = new CompaniesDal();
+            var result = SrchDal.SearchCompanyBy(searchBox.Text);
+            if (result.Count > 0)
+            {
+                companiesDataGrid.Rows.Clear();
+
+                for(var i = 0;i<= result.Count;i++)
+                {
+                    companiesDataGrid.Rows[i].Cells[1].Value = result[i].CompanyName;
+                    companiesDataGrid.Rows[i].Cells[2].Value = result[i].City;
+                    companiesDataGrid.Rows[i].Cells[3].Value = result[i].Address;
+                    companiesDataGrid.Rows[i].Cells[4].Value = result[i].PhoneNumber;
+                    companiesDataGrid.Rows[i].Cells[5].Value = SetStatusImage(result[i].Status);
+                    companiesDataGrid.Rows[i].Cells[6].Value = result[i].FirstEntryDate;
+                    companiesDataGrid.Rows[i].Cells[7].Value = result[i].Details;
+                }
+                MessageBox.Show("Pronadjeno je {0} rezultata", result.Count.ToString());
+                
+            }
+            else
+            {
+                MessageBox.Show("Za dati pojam nisu nadjeni rezultati");
+            }
+
+        }
     }
 }

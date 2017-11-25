@@ -40,6 +40,8 @@
             this.addButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            this.searchBox = new System.Windows.Forms.TextBox();
+            this.searchButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.companiesDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +58,7 @@
             this.Status,
             this.DatumPonude,
             this.Detalji});
-            this.companiesDataGrid.Location = new System.Drawing.Point(46, 34);
+            this.companiesDataGrid.Location = new System.Drawing.Point(42, 74);
             this.companiesDataGrid.Name = "companiesDataGrid";
             this.companiesDataGrid.Size = new System.Drawing.Size(818, 365);
             this.companiesDataGrid.TabIndex = 0;
@@ -110,7 +112,7 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(540, 445);
+            this.addButton.Location = new System.Drawing.Point(72, 452);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
             this.addButton.TabIndex = 1;
@@ -120,7 +122,7 @@
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(632, 445);
+            this.updateButton.Location = new System.Drawing.Point(174, 452);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
             this.updateButton.TabIndex = 2;
@@ -130,7 +132,7 @@
             // 
             // deleteButton
             // 
-            this.deleteButton.Location = new System.Drawing.Point(739, 445);
+            this.deleteButton.Location = new System.Drawing.Point(275, 452);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
             this.deleteButton.TabIndex = 3;
@@ -138,11 +140,30 @@
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // searchBox
+            // 
+            this.searchBox.Location = new System.Drawing.Point(42, 29);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(207, 20);
+            this.searchBox.TabIndex = 4;
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(275, 29);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(75, 23);
+            this.searchButton.TabIndex = 5;
+            this.searchButton.Text = "Pretrazi";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 487);
+            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.searchBox);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.addButton);
@@ -153,6 +174,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.companiesDataGrid)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -170,6 +192,8 @@
         private System.Windows.Forms.DataGridViewImageColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn DatumPonude;
         private System.Windows.Forms.DataGridViewTextBoxColumn Detalji;
+        private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.Button searchButton;
     }
 }
 

@@ -57,5 +57,3 @@ F:\GitHub\Contapper\Contapper\bin\Debug\Gmap.net.pdb
 F:\GitHub\Contapper\Contapper\bin\Debug\System.Data.SQLite.xml
 F:\GitHub\Contapper\Contapper\bin\Debug\System.Data.SQLite.dll.config
 F:\GitHub\Contapper\Contapper\obj\Debug\Contapper.Login.resources
-F:\GitHub\Contapper\Contapper\bin\Debug\x86\e_sqlite3.dll
-F:\GitHub\Contapper\Contapper\bin\Debug\x64\e_sqlite3.dll
