@@ -9,9 +9,9 @@ namespace Contapper
 {
     public static class EnumConverter
     {
-        public static Status ConvertToStatusEnum(object value)
+        public static Status ConvertToStatusEnum(string status)
         {
-            var status = (string)value;
+           
 
             switch (status)
             {

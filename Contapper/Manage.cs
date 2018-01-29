@@ -76,7 +76,7 @@ namespace Contapper
                 company.CompanyName = companyName.Text;
                 company.City = city.Text;
                 company.Address = address.Text;
-                company.Status = EnumConverter.ConvertToStatusEnum(StatusComboBox.SelectedItem);
+                //company.Status = EnumConverter.ConvertToStatusEnum(StatusComboBox.SelectedItem);
                 company.FirstEntryDate = dateTimePicker1.Text;
                 company.Details = DetailsTextBox.Text;
                 company.PhoneNumber = phoneNumber.Text;

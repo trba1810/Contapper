@@ -1,12 +1,16 @@
 ﻿using Contapper.DAL;
 using Contapper.DAL.Model;
+using Contapper.Properties;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,15 +22,21 @@ namespace Contapper
 
         public Login Login { get; set; }
 
-        public Form1(Company company,Login login)
+        public ImageList StatusImageList { get; set; } = new ImageList();
+
+        private bool isReloading;
+
+        private BindingSource companiesBindingSource = new BindingSource();
+
+        public Form1(Company company, Login login)
         {
             InitializeComponent();
-            
+
             InitializeDataGrid(company);
 
             Login = login;
-                           
-        }
+
+        }     
 
         public void InitializeDataGrid(Company company)
         {
@@ -34,7 +44,7 @@ namespace Contapper
             {
                 return;
             }
-            companiesDataGrid.Rows.Add(company.Id , company.CompanyName, company.City, company.Address , company.PhoneNumber, SetStatusImage(company.Status) , company.FirstEntryDate , company.Details) ;
+            companiesDataGrid.Rows.Add(company.Id, company.CompanyName, company.City, company.Address, company.PhoneNumber, SetStatusImage(company.Status), company.FirstEntryDate, company.Details);
         }
 
         public void InitializeUpdatedDataGrid(Company company)
@@ -43,7 +53,7 @@ namespace Contapper
             {
                 return;
             }
-            for (var i = 0;i < companiesDataGrid.RowCount; i++)
+            for (var i = 0; i < companiesDataGrid.RowCount; i++)
             {
                 if (companiesDataGrid.Rows[i].Cells[0].Value.ToString() == company.Id)
                 {
@@ -59,18 +69,21 @@ namespace Contapper
 
         }
         private void Form1_Load(object sender, EventArgs e)
-        {           
+        {
+
             // kad se ucita form1 prozor izvuci sve iz baze
             updateButton.Enabled = false;
             deleteButton.Enabled = false;
-
             CompaniesDal CDal = new CompaniesDal();
             var data = CDal.GetAllCompanies();
-           
-            foreach (var d in data)
-            {
-                companiesDataGrid.Rows.Add(d.Id,d.CompanyName,d.City,d.Address,d.PhoneNumber, SetStatusImage(d.Status),d.FirstEntryDate,d.Details);
-            }
+            companiesBindingSource.DataSource = data;
+            companiesDataGrid.DataSource = companiesBindingSource;
+            companiesDataGrid.Columns[0].Visible = false;
+            companiesDataGrid.Columns[5].Visible = false;
+            var imageColumn = new DataGridViewImageColumn();
+            imageColumn.Name = "StatusImage";
+            imageColumn.HeaderText = "Status";
+            companiesDataGrid.Columns.Add(imageColumn);
         }
 
         public Bitmap SetStatusImage(Status status)
@@ -78,15 +91,34 @@ namespace Contapper
             switch (status)
             {
                 case DAL.Model.Status.NotInterested:
-                    return Properties.Resources.attention;
+                    var attention = Resources.attention;
+                    attention.Tag = DAL.Model.Status.NotInterested.ToString();
+                    //var attentionImage = (Image)attention;
+                    return attention;
+
                 case DAL.Model.Status.Interested:
-                    return Properties.Resources.check;
+                    var check = Resources.check;
+                    check.Tag = DAL.Model.Status.Interested.ToString();
+                    //var checkImage = (Image)check;
+                    return check;
+
                 case DAL.Model.Status.Indeterminate:
-                    return Properties.Resources.inder;
+                    var inder = Resources.inder;
+                    inder.Tag = DAL.Model.Status.Indeterminate.ToString();
+                    //var inderImage = (Image)inder;
+                    return inder;
+
                 case DAL.Model.Status.Compensation:
-                    return Properties.Resources.comp;
+                    var comp = Resources.comp;
+                    comp.Tag = DAL.Model.Status.Compensation.ToString();
+                    //var compImage = (Image)comp;
+                    return comp;
+
                 case DAL.Model.Status.Block:
-                    return Properties.Resources.blok;
+                    var blok = Resources.blok;
+                    blok.Tag = DAL.Model.Status.Block.ToString();
+                    //var blokImage = (Image)blok;
+                    return blok;
             }
             return null;
         }
@@ -95,7 +127,7 @@ namespace Contapper
         {
             // Operation.Create - Oznacava da je u pitanju kreiranje operacije
             // this - saljemo parent objekat manage klasi 
-            Manage m = new Manage(Operation.Create,this);
+            Manage m = new Manage(Operation.Create, this);
             m.Show();
         }
 
@@ -104,16 +136,16 @@ namespace Contapper
             // company - kompanija koja je trenutno selektovana
             // Operation.Update - Oznacava da je u pitanju update operacija
             // this - saljemo parent objekat manage klasi 
-            Manage m = new Manage(Company,Operation.Update,this);
+            Manage m = new Manage(Company, Operation.Update, this);
             m.Show();
-            
+
         }
 
         private void companiesDataGrid_SelectionChanged(object sender, EventArgs e)
         {
             deleteButton.Enabled = true;
             // ova metoda se poziva kad se selektuje jedan red u tabeli
-            if(companiesDataGrid.SelectedRows.Count == 0)
+            if (companiesDataGrid.SelectedRows.Count == 0)
             {
                 return;
             }
@@ -130,7 +162,7 @@ namespace Contapper
                 Company.FirstEntryDate = selectedRow.Cells[6].Value.ToString();
                 Company.Details = selectedRow.Cells[7].Value.ToString();
             }
-            
+
 
         }
 
@@ -146,7 +178,7 @@ namespace Contapper
             {
                 MessageBox.Show("Kompanija je uspesno obrisana");
 
-                for (var i = 0; i<=companiesDataGrid.Rows.Count; i++)
+                for (var i = 0; i <= companiesDataGrid.Rows.Count; i++)
                 {
                     if (companiesDataGrid.Rows[i].Cells[0].Value.ToString() == Company.Id)
                     {
@@ -154,7 +186,7 @@ namespace Contapper
                     }
                 }
             }
-            
+
         }
 
         private void companiesDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -177,7 +209,7 @@ namespace Contapper
                 return;
             }
 
-            Map map = new Map(city,address);
+            Map map = new Map(city, address);
 
             map.Show();
         }
@@ -200,7 +232,7 @@ namespace Contapper
             {
                 companiesDataGrid.Rows.Clear();
 
-                for(var i = 0;i<= result.Count;i++)
+                for (var i = 0; i <= result.Count; i++)
                 {
                     companiesDataGrid.Rows[i].Cells[1].Value = result[i].CompanyName;
                     companiesDataGrid.Rows[i].Cells[2].Value = result[i].City;
@@ -211,13 +243,110 @@ namespace Contapper
                     companiesDataGrid.Rows[i].Cells[7].Value = result[i].Details;
                 }
                 MessageBox.Show("Pronadjeno je {0} rezultata", result.Count.ToString());
-                
+
             }
             else
             {
                 MessageBox.Show("Za dati pojam nisu nadjeni rezultati");
             }
 
+        }
+
+        private void InterestedBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (InterestedBox.Checked == true)
+            {              
+                var companies = companiesBindingSource.DataSource as BindingList<Company>;
+
+                if (companies != null && companies.Count > 0)
+                {
+                    foreach (var company in companies.ToList())
+                    {
+
+                        if (company.Status != Contapper.DAL.Model.Status.Interested)
+                        {
+                            companies.Remove(company);
+                        }
+                    }
+                    
+                    
+                }
+                
+
+            }
+            else
+            {
+                var CDal = new CompaniesDal();
+                var allCompanies = CDal.GetAllCompanies();
+                isReloading = true;
+                companiesBindingSource.DataSource = allCompanies;
+                companiesDataGrid.DataSource = companiesBindingSource;
+                companiesDataGrid.Update();
+                isReloading = false;
+                
+
+            }
+        }
+
+        private void NotInterestedBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (NotInterestedBox.Checked == true)
+            {
+                var companies = companiesBindingSource.DataSource as BindingList<Company>;
+
+                if (companies != null && companies.Count > 0)
+                {
+                    foreach (var company in companies.ToList())
+                    {
+
+                        if (company.Status != Contapper.DAL.Model.Status.NotInterested)
+                        {
+                            companies.Remove(company);
+                        }
+                    }
+
+
+                }
+
+
+            }
+            else
+            {
+                var CDal = new CompaniesDal();
+                var allCompanies = CDal.GetAllCompanies();
+                isReloading = true;
+                companiesBindingSource.DataSource = allCompanies;
+                companiesDataGrid.DataSource = companiesBindingSource;
+                companiesDataGrid.Update();
+                isReloading = false;
+
+
+            }
+        }
+
+        private void companiesDataGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (companiesDataGrid.Columns[e.ColumnIndex].Name == "StatusImage")
+            {
+                if (isReloading)
+                {
+                    var row = (DataGridView)sender;
+                    var statusCell = row.Rows[e.RowIndex].Cells[6].Value.ToString();
+                    var status = EnumConverter.ConvertToStatusEnum(statusCell);
+                    e.Value = SetStatusImage(status);
+                }
+                else
+                {
+                    var row = (DataGridView)sender;
+                    var statusCell = row.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    var status = EnumConverter.ConvertToStatusEnum(statusCell);
+                    e.Value = SetStatusImage(status);
+                }
+                
+
+                
+            }
+            
         }
     }
 }

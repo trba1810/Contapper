@@ -8,6 +8,8 @@ using System.Configuration;
 using System.Data.SQLite;
 using System.Data;
 using System.Globalization;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace Contapper.DAL
 {
@@ -17,9 +19,9 @@ namespace Contapper.DAL
 
 
 
-        public List<Company> GetAllCompanies()
+        public BindingList<Company> GetAllCompanies()
         {
-            var companies = new List<Company>();
+            var companies = new BindingList<Company>();
 
             var sql = "SELECT * FROM Company";
 
@@ -51,9 +53,15 @@ namespace Contapper.DAL
                     }
                     return companies;
                 }
-                catch (Exception e)
+                catch (ArgumentException e)
                 {
                     Console.WriteLine(e);
+                    throw;
+                }
+
+                catch (ArithmeticException a)
+                {
+                    Console.WriteLine(a);
                     throw;
                 }
             }
@@ -162,9 +170,9 @@ namespace Contapper.DAL
             }
         }
 
-        public List<Company> SearchCompanyBy(string phrase)
+        public ObservableCollection<Company> SearchCompanyBy(string phrase)
         {
-            var companies = new List<Company>();
+            var companies = new ObservableCollection<Company>();
 
             var sql = "SELECT * FROM Company WHERE CompanyName LIKE '%" + phrase +"%'";
 
